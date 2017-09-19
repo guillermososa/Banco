@@ -1,23 +1,27 @@
-﻿Public NotInheritable Class CajaDeAhorro
+﻿Public Class CajaDeAhorro
     Inherits Cuenta
+    Private _InteresMensual As Single
 
-    Private _interesMensual As Single
-
-    Sub New(numero As Integer, balance As Double, interesMensual As Single)
-        MyBase.New(numero, balance)
-        Me.InteresMensual = interesMensual
+    Sub New(Numero As Integer, Balance As Double, InteresMensual As Single, Cliente As Cliente)
+        MyBase.New(Numero, Balance, Cliente)
+        Me.InteresMensual = 0
     End Sub
+
+    'Sub New()
+    '    MyBase.New()
+    '    _InteresMensual = 0
+    'End Sub
 
     Public Property InteresMensual As Single
         Get
-            Return _interesMensual
+            Return _InteresMensual
         End Get
         Set(value As Single)
-            _interesMensual = value
+            _InteresMensual = value
         End Set
     End Property
 
     Public Sub Capitalizar()
-        _balance += Balance * InteresMensual / 100
+
     End Sub
 End Class

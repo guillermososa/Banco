@@ -3,7 +3,7 @@
     Private _documento As Integer
     Private _fechaNacimiento As Date
 
-    ' constructor
+    'constructor
     Sub New()
         _nombre = ""
         _documento = 0
@@ -11,29 +11,26 @@
     End Sub
 
     Sub New(nombre As String, documento As Integer, fechaNacimiento As Date)
-        Me.New()
-        Me.Nombre = nombre
-        Me.Documento = documento
+        Me.nombre = nombre
+        Me.documento = documento
         Me.fechaNacimiento = fechaNacimiento
     End Sub
 
-    Public Property Nombre As String
+    Public Property nombre As String
         Get
             Return _nombre
         End Get
-        Set(value As String)
-            If value.Length <= 30 Then
-                _nombre = value
-            End If
+        Set(valor As String)
+            _nombre = valor
         End Set
     End Property
 
-    Public Property Documento As Integer
+    Public Property documento As Integer
         Get
             Return _documento
         End Get
-        Set(value As Integer)
-            _documento = value
+        Set(valor As Integer)
+            _documento = valor
         End Set
     End Property
 
@@ -41,12 +38,12 @@
         Get
             Return _fechaNacimiento
         End Get
-        Set(value As Date)
-            _fechaNacimiento = value
+        Set(valor As Date)
+            _fechaNacimiento = valor
         End Set
     End Property
 
-    Public Overrides Function ToString() As String
-        Return Nombre & "(" & Documento & ")"
-    End Function
+    'Private Function CalcularEdad(ByVal Fecha As Date) As UShort
+    '    Return
+    'End Function
 End Class

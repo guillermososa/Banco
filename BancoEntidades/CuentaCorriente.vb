@@ -1,28 +1,28 @@
 ﻿Public NotInheritable Class CuentaCorriente
     Inherits Cuenta
-    Private _montoSobregiro As Single
+    Private _MontoSobreGiro As Single
 
-    Sub New(numero As Integer, balance As Double, montoSobregiro As Single)
-        MyBase.New(numero, balance)
-        Me.MontoSobregiro = montoSobregiro
+    Sub New(Numero As Integer, Balance As Double, MontoSobreGiro As Single, Cliente As Cliente)
+        MyBase.New(Numero, Balance, Cliente)
+        Me.MontoSobreGiro = 0
     End Sub
 
-    Public Property MontoSobregiro As Single
+    Public Property MontoSobreGiro As Single
         Get
-            Return _montoSobregiro
+            Return _MontoSobreGiro
         End Get
         Set(value As Single)
-            _montoSobregiro = value
+            _MontoSobreGiro = value
         End Set
     End Property
 
-    Public Overrides Function Extraer(value As Double) As Boolean
-        If Balance + MontoSobregiro >= value Then
-            _balance = Balance - value
+
+    Public Overrides Function Extraer(valor As Double) As Boolean
+        If _balance + MontoSobreGiro >= valor Then
+            _balance -= valor
             Return True
         Else
             Return False
         End If
     End Function
-
 End Class

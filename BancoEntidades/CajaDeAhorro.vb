@@ -10,7 +10,7 @@
     'Sub New()
     '    MyBase.New()
     '    _InteresMensual = 0
-    'End Sub
+    'End Sub 
 
     Public Property InteresMensual As Single
         Get

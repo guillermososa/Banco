@@ -1,19 +1,22 @@
 ﻿Public Class Banco
-    Private Clientes As List(Of Cliente)
+    'Campos
+    Private _Clientes As List(Of Cliente)
 
+    'Constructor
     Sub New()
-        Clientes = New List(Of Cliente)
+        _Clientes = New List(Of Cliente)
     End Sub
 
+    'Metodos
     Public Sub addCliente(Cliente As Cliente)
-        Clientes.Add(Cliente)
+        _Clientes.Add(Cliente)
     End Sub
 
     Public Sub removeCliente(Cliente As Cliente)
-        Clientes.Remove(Cliente)
+        _Clientes.Remove(Cliente)
     End Sub
 
     Public Function getAllClientes() As List(Of Cliente)
-        Return Clientes
+        Return _Clientes
     End Function
 End Class

@@ -1,49 +1,66 @@
 ﻿Public Class Cliente
-    Private _nombre As String
-    Private _documento As Integer
-    Private _fechaNacimiento As Date
+    'Campos
+    Private _Nombre As String
+    Private _Documento As Integer
+    Private _FechaNacimiento As Date
+    Private _Cuentas As List(Of Cuenta)
 
-    'constructor
+    'Constructor
     Sub New()
-        _nombre = ""
-        _documento = 0
-        _fechaNacimiento = Nothing
+        Me.New("", 0, Nothing)
     End Sub
 
-    Sub New(nombre As String, documento As Integer, fechaNacimiento As Date)
-        Me.nombre = nombre
-        Me.documento = documento
-        Me.fechaNacimiento = fechaNacimiento
+    'Constructor Sobrecargado
+    Sub New(Nombre As String, Documento As Integer, FechaNacimiento As Date)
+        Me.Nombre = Nombre
+        Me.Documento = Documento
+        Me.FechaNacimiento = FechaNacimiento
+        _Cuentas = New List(Of Cuenta)
     End Sub
 
-    Public Property nombre As String
+    'Propiedades
+    Public Property Nombre As String
         Get
-            Return _nombre
+            Return _Nombre
         End Get
-        Set(valor As String)
-            _nombre = valor
+        Set(value As String)
+            If value <> "" And value.Length <= 30 Then _Nombre = value
         End Set
     End Property
 
-    Public Property documento As Integer
+    Public Property Documento As Integer
         Get
-            Return _documento
+            Return _Documento
         End Get
-        Set(valor As Integer)
-            _documento = valor
+        Set(value As Integer)
+            _Documento = value
         End Set
     End Property
 
-    Public Property fechaNacimiento As Date
+    Public Property FechaNacimiento As Date
         Get
-            Return _fechaNacimiento
+            Return _FechaNacimiento
         End Get
-        Set(valor As Date)
-            _fechaNacimiento = valor
+        Set(value As Date)
+            _FechaNacimiento = value
         End Set
     End Property
 
-    'Private Function CalcularEdad(ByVal Fecha As Date) As UShort
-    '    Return
-    'End Function
+    'Metodos
+    Public Sub addCuenta(Cuenta As Cuenta)
+        _Cuentas.Add(Cuenta)
+    End Sub
+
+    Public Sub removeCuenta(Cuenta As Cuenta)
+        _Cuentas.Remove(Cuenta)
+    End Sub
+
+    Public Function getAllCuentas() As List(Of Cuenta)
+        Return _Cuentas
+    End Function
+
+    'Sobrescribir ToString
+    Public Overrides Function ToString() As String
+        Return Nombre & "(" & Documento & ")"
+    End Function
 End Class

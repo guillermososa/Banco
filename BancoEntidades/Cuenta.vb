@@ -1,31 +1,34 @@
 ﻿Public MustInherit Class Cuenta
-    Private _numero As Integer
-    Protected _balance As Double
+    'Campos
+    Private _Numero As Integer
+    Protected _Balance As Double
     Private _Cliente As Cliente
 
+    'Constructor
     Sub New()
-        Me.New(0, 0, New Cliente)
+        Me.New(0, New Cliente)
     End Sub
 
-    Sub New(Numero As Integer, Balance As Double, Cliente As Cliente)
-        MyBase.New()
+    'Constructor Sobrecargado
+    Sub New(Numero As Integer, Cliente As Cliente)
         Me.Numero = Numero
-        _balance = Balance
         Me.Cliente = Cliente
+        _Balance = 0
     End Sub
 
+    'Propiedades
     Public Property Numero As Integer
         Get
-            Return _numero
+            Return _Numero
         End Get
-        Set(valor As Integer)
-            _numero = valor
+        Set(value As Integer)
+            _Numero = value
         End Set
     End Property
 
     Public ReadOnly Property Balance As Double
         Get
-            Return _balance
+            Return _Balance
         End Get
     End Property
 
@@ -34,17 +37,19 @@
             Return _Cliente
         End Get
         Set(value As Cliente)
+            value.addCuenta(Me)
             _Cliente = value
         End Set
     End Property
 
-    Public Sub Depositar(valor As Double)
-        _balance += valor
+    'Metodos
+    Public Sub Depositar(value As Double)
+        _Balance = Balance + value
     End Sub
 
-    Public Overridable Function Extraer(valor As Double) As Boolean
-        If _balance >= valor Then
-            _balance -= valor
+    Public Overridable Function Extraer(value As Double) As Boolean
+        If Balance >= value Then
+            _Balance = Balance - value
             Return True
         Else
             Return False

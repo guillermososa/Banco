@@ -3,16 +3,22 @@
     Inherits Cuenta
 
     'Campos
-    Private _InteresMensual As Single
+    Private Shared _InteresMensual As Single
+
+    'Constructor Shared se ejecuta solo en el primer objeto
+    Shared Sub New()
+        InteresMensual = 2
+    End Sub
 
     'Constructor Sobrecargado
-    Sub New(Numero As Integer, InteresMensual As Single, Cliente As Cliente)
+    Sub New(Numero As Integer, Cliente As Cliente)
+        'Sub New(Numero As Integer, InteresMensual As Single, Cliente As Cliente)
+        'Me.InteresMensual = InteresMensual
         MyBase.New(Numero, Cliente)
-        Me.InteresMensual = InteresMensual
     End Sub
 
     'Propiedades
-    Public Property InteresMensual As Single
+    Public Shared Property InteresMensual As Single
         Get
             Return _InteresMensual
         End Get

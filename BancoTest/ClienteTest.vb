@@ -21,6 +21,10 @@ Module ClienteTest
         Console.WriteLine("Fecha de nacimiento: " & cliente2.FechaNacimiento)
         Console.WriteLine("ToString: " & cliente2.ToString())
 
+        Console.WriteLine("Cliente1 and Cliente2: {0}", cliente1.Equals(cliente2))
+        Dim cliente3 As New Cliente(cliente1.Nombre, cliente1.Documento, cliente1.FechaNacimiento)
+        Console.WriteLine("Cliente1 and Cliente3: {0}", cliente1.Equals(cliente3))
+
         '' declaración
         'Dim cliente1 As Cliente
         '' instanciacion
@@ -40,5 +44,6 @@ Module ClienteTest
         'Console.WriteLine("Documento: " & cliente2.Documento)
         'Console.WriteLine("Fecha de nacimiento: " & cliente2.FechaNacimiento)
         'Console.WriteLine("ToString: " & cliente2.ToString())
+        Console.ReadKey()
     End Sub
 End Module

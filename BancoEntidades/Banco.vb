@@ -19,4 +19,20 @@
     Public Shared Function getAllClientes() As List(Of Cliente)
         Return _Clientes
     End Function
+
+    Public Shared Function containsCliente(Cliente As Cliente) As Boolean
+        Return _Clientes.Contains(Cliente)
+    End Function
+
+    Public Shared Function existsClienteByDocumento(Documento As Integer) As Boolean
+        Return _Clientes.Exists(Function(c) c.Documento = Documento)
+    End Function
+
+    Public Shared Function findClienteByDocumento(Documento As Integer) As Cliente
+        Return _Clientes.Find(Function(c) c.Documento = Documento)
+    End Function
+
+    Public Shared Function findAllClienteByNombre(Nombre As String) As List(Of Cliente)
+        Return _Clientes.FindAll(Function(c) c.Nombre.Contains(Nombre))
+    End Function
 End Class
